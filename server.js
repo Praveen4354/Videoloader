@@ -29,28 +29,27 @@ app.get("/api/download", (req, res) => {
 
   let format = "best";
 
-if (fmt === "720p") format = "best[height<=720]";
-if (fmt === "1080p") format = "best[height<=1080]";
-if (fmt === "4k") format = "best"; // 🔥 TEMP FIX
+  if (fmt === "720p") format = "best[height<=720]";
+  if (fmt === "1080p") format = "best[height<=1080]";
+  if (fmt === "4k") format = "best";
 
   const command = `${__dirname}/yt-dlp -f "${format}" -o "${filePath}" ${url}`;
 
   exec(command, (err, stdout, stderr) => {
-  console.log("COMMAND:", command);
-  console.log("STDOUT:", stdout);
-  console.log("STDERR:", stderr);
+    console.log("COMMAND:", command);
+    console.log("STDOUT:", stdout);
+    console.log("STDERR:", stderr);
 
-  if (err) {
-    console.error("ERROR:", err);
-    return res.status(500).send("Download failed");
-  }
+    if (err) {
+      console.error("ERROR:", err);
+      return res.status(500).send("Download failed");
+    }
 
-  res.download(filePath, () => {
-    fs.unlink(filePath, () => {});
+    res.download(filePath, () => {
+      fs.unlink(filePath, () => {});
+    });
   });
-});
-  });
-});
+}); // ✅ only ONE closing here
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log("Server running"));
