@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VidSnap 4K – Download YouTube Videos in 4K Free | MP4 MP3 HD</title>
+<meta name="description" content="Download YouTube videos in 4K, 1080p, 720p or MP3 instantly. Free online YouTube video downloader. Fast, secure, no software needed." />
+<meta name="keywords" content="YouTube video downloader 4K, download YouTube videos free HD, YouTube to MP4 converter, 4K video downloader online, download YouTube shorts" />
+<meta property="og:title" content="VidSnap 4K – Download YouTube Videos in 4K Free" />
+<meta property="og:description" content="Fast, secure 4K YouTube video downloader. MP4, 1080p, 720p, MP3 – no install needed." />
+<meta property="og:type" content="website" />
+<link rel="canonical" href="https://yourdomain.com/" />
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "VidSnap 4K",
+  "description": "Free online YouTube video downloader supporting 4K, 1080p, 720p and MP3",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How do I download YouTube videos in 4K?", "acceptedAnswer": { "@type": "Answer", "text": "Paste the YouTube URL, select 4K quality, watch a short ad, then click Download." } },
+    { "@type": "Question", "name": "Is VidSnap 4K free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free. 4K downloads require watching a short ad." } },
+    { "@type": "Question", "name": "Does it work on mobile?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, VidSnap 4K is fully mobile-optimized and works on all devices." } }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --bg:       #0a0a0f;
+  --surface:  #111118;
+  --card:     #16161f;
+  --border:   #242432;
+  --accent:   #ff3c00;
+  --accent2:  #ff8c00;
+  --gold:     #ffd60a;
+  --text:     #e8e8f0;
+  --muted:    #6b6b80;
+  --success:  #00e87a;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+  --radius:   12px;
+  --glow:     0 0 40px rgba(255,60,0,0.25);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── Noise texture overlay ─── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--accent);
+  color: #fff !important;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+}
+
+/* ─── AD BANNER TOP ─── */
+.ad-top {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.ad-placeholder {
+  display: inline-block;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  padding: 0.3rem 1rem;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+}
+
+/* ─── LAYOUT ─── */
+.page-wrap {
+  display: grid;
+  grid-template-columns: 1fr min(820px, 100%) 1fr;
+  gap: 0;
+}
+.sidebar {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+.sidebar-ad {
+  position: sticky;
+  top: 80px;
+  width: 160px;
+  height: 600px;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+}
+main { padding: 0 1rem; }
+
+/* ─── HERO ─── */
+.hero {
+  text-align: center;
+  padding: 5rem 1rem 3rem;
+  position: relative;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,60,0,0.1);
+  border: 1px solid rgba(255,60,0,0.3);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+.hero-badge::before { content: '●'; animation: pulse-dot 1.5s ease-in-out infinite; }
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  margin-bottom: 1.25rem;
+}
+h1 .highlight {
+  color: var(--accent);
+  -webkit-text-stroke: 1px var(--accent);
+}
+.hero-sub {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+/* ─── DOWNLOAD BOX ─── */
+.download-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--glow);
+}
+.url-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.url-input {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  padding: 0.875rem 1.25rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.url-input::placeholder { color: var(--muted); }
+.url-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255,60,0,0.12);
+}
+.btn-fetch {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  padding: 0 1.75rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+.btn-fetch:hover { background: #e83500; }
+.btn-fetch:active { transform: scale(0.97); }
+
+/* Format selector */
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.625rem;
+}
+.fmt-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.625rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+  position: relative;
+}
+.fmt-btn:hover { border-color: var(--accent); color: var(--text); }
+.fmt-btn.active {
+  background: rgba(255,60,0,0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.fmt-btn .badge-4k {
+  position: absolute;
+  top: -8px; right: -6px;
+  background: var(--gold);
+  color: #000;
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+/* ─── VIDEO PREVIEW CARD ─── */
+.preview-card {
+  display: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.preview-card.visible { display: flex; animation: fadeUp 0.35s ease; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.thumb-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.thumb-wrap img { width: 100%; display: block; border-radius: 10px; }
+.thumb-duration {
+  position: absolute;
+  bottom: 6px; right: 6px;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.preview-info { flex: 1; min-width: 0; }
+.preview-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.preview-meta {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.preview-meta span { margin-right: 1rem; }
+
+/* ─── AD GATE (Rewarded) ─── */
+.ad-gate {
+  display: none;
+  background: rgba(255,214,10,0.06);
+  border: 1px solid rgba(255,214,10,0.25);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+.ad-gate.visible { display: block; animation: fadeUp 0.3s ease; }
+.ad-gate p { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.875rem; }
+.ad-gate strong { color: var(--gold); }
+.btn-watch-ad {
+  background: var(--gold);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  padding: 0.6rem 1.75rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-watch-ad:hover { opacity: 0.85; }
+
+/* Download button */
+.btn-download {
+  display: none;
+  width: 100%;
+  background: var(--success);
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  padding: 0.9rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: opacity 0.2s;
+}
+.btn-download.visible { display: block; animation: fadeUp 0.3s ease; }
+.btn-download:hover { opacity: 0.88; }
+
+/* Progress bar */
+.progress-wrap { display: none; margin-top: 1rem; }
+.progress-wrap.visible { display: block; }
+.progress-label {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.progress-bar {
+  height: 6px;
+  background: var(--border);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 100px;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/* ─── IN-CONTENT AD ─── */
+.ad-inline {
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  margin: 2rem 0;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── FEATURES ─── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.feat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.feat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.feat-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+.feat-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+.feat-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+
+/* ─── HOW IT WORKS ─── */
+.steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 3rem; }
+.step {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  position: relative;
+  padding-bottom: 2rem;
+}
+.step:last-child { padding-bottom: 0; }
+.step-line {
+  position: absolute;
+  left: 1.375rem;
+  top: 3rem;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+.step:last-child .step-line { display: none; }
+.step-num {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+.step-content h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+.step-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+/* ─── FAQ ─── */
+.faq { margin-bottom: 3rem; }
+details {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 0.5rem;
+  transition: border-color 0.2s;
+}
+details[open] { border-color: var(--accent); }
+summary {
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::after { content: '+'; color: var(--accent); font-size: 1.25rem; }
+details[open] summary::after { content: '−'; }
+details p {
+  padding: 0 1.25rem 1rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+.footer-brand .logo { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+.footer-links h4 { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+.footer-links a {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+  transition: color 0.15s;
+}
+.footer-links a:hover { color: var(--text); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 1rem 5%;
+  font-size: 0.75rem;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ─── FLOATING STICKY AD ─── */
+.sticky-ad {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.sticky-ad-inner {
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 0.4rem 2rem;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--muted);
+  flex: 1;
+  max-width: 728px;
+  text-align: center;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sticky-close {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+/* ─── MODAL (Ad Gate) ─── */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 440px;
+  width: 90%;
+  text-align: center;
+  animation: fadeUp 0.3s ease;
+}
+.modal h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+.modal p { font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.ad-countdown {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.modal-skip {
+  background: var(--success);
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  display: none;
+}
+.modal-skip.visible { display: inline-block; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1100px) {
+  .sidebar { display: none; }
+  .page-wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .url-row { flex-direction: column; }
+  .btn-fetch { padding: 0.875rem; }
+  .format-grid { grid-template-columns: repeat(2, 1fr); }
+  .preview-card { flex-direction: column; }
+  .thumb-wrap { width: 100%; }
+  footer { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; }
+  nav { padding: 0 1rem; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── STICKY BOTTOM AD ─── -->
+<div class="sticky-ad" id="stickyAd">
+  <div class="sticky-ad-inner">[ AD UNIT — 728×90 — Place AdSense / Adsterra / PropellerAds code here ]</div>
+  <button class="sticky-close" onclick="document.getElementById('stickyAd').style.display='none'">✕</button>
+</div>
+
+<!-- ─── AD GATE MODAL ─── -->
+<div class="modal-overlay" id="adModal">
+  <div class="modal">
+    <div style="font-size:2rem;margin-bottom:0.75rem">🎬</div>
+    <h2>UNLOCK 4K DOWNLOAD</h2>
+    <p>Watch a short ad to unlock your free <strong style="color:var(--gold)">4K download</strong>. It helps keep VidSnap free for everyone.</p>
+    <!-- Replace this div with actual rewarded ad code from Adsterra / PropellerAds -->
+    <div style="background:var(--surface);border:1px dashed var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;font-size:0.75rem;font-family:var(--font-mono);color:var(--muted)">
+      [ REWARDED AD SLOT — Adsterra / PropellerAds SDK ]
+    </div>
+    <div class="ad-countdown" id="countdown">5</div>
+    <p style="font-size:0.78rem">Ad ends in <span id="countdownLabel">5</span> seconds…</p>
+    <button class="modal-skip" id="skipBtn" onclick="unlockDownload()">✓ DOWNLOAD NOW</button>
+  </div>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="logo">Vid<span>Snap</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#" class="nav-cta">4K Download</a></li>
+  </ul>
+</nav>
+
+<!-- ─── TOP AD ─── -->
+<div class="ad-top">
+  <div class="ad-placeholder">[ AD — 728×90 — Google AdSense / Adsterra leaderboard ]</div>
+</div>
+
+<!-- ─── PAGE WRAP ─── -->
+<div class="page-wrap">
+
+  <!-- LEFT SIDEBAR AD -->
+  <aside class="sidebar">
+    <div class="sidebar-ad">
+      <span style="font-size:1.5rem">📢</span>
+      <span>AD</span>
+      <span>160×600</span>
+      <span style="text-align:center;padding:0.5rem">Place AdSense / Adsterra skyscraper here</span>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero" id="home">
+      <div class="hero-badge">⚡ Fast &amp; Free — No Registration</div>
+      <h1>DOWNLOAD VIDEOS<br>IN <span class="highlight">4K</span> INSTANTLY</h1>
+      <p class="hero-sub">YouTube, Shorts, Reels — download in 4K, 1080p, 720p or grab just the audio as MP3. No software, no limits.</p>
+
+      <!-- DOWNLOAD BOX -->
+      <div class="download-box" id="tools">
+        <div class="url-row">
+          <input class="url-input" id="urlInput" type="url" placeholder="Paste YouTube / Shorts link here…" autocomplete="off" />
+          <button class="btn-fetch" id="fetchBtn" onclick="fetchVideo()">FETCH ↓</button>
+        </div>
+
+        <!-- FORMAT SELECTOR -->
+        <div class="format-grid">
+          <button class="fmt-btn" onclick="setFormat(this,'720p')">MP4 720p</button>
+          <button class="fmt-btn active" onclick="setFormat(this,'1080p')">MP4 1080p</button>
+          <button class="fmt-btn" onclick="setFormat(this,'4k')">
+            MP4 4K
+            <span class="badge-4k">4K</span>
+          </button>
+          <button class="fmt-btn" onclick="setFormat(this,'mp3')">MP3 Audio</button>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="progress-wrap" id="progressWrap">
+          <div class="progress-label">
+            <span id="progressStatus">Fetching video info…</span>
+            <span id="progressPct">0%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+
+        <!-- VIDEO PREVIEW -->
+        <div class="preview-card" id="previewCard">
+          <div class="thumb-wrap">
+            <img id="thumbImg" src="" alt="thumbnail" />
+            <span class="thumb-duration" id="thumbDuration"></span>
+          </div>
+          <div class="preview-info">
+            <div class="preview-title" id="previewTitle">Video Title</div>
+            <div class="preview-meta">
+              <span id="previewChannel">—</span>
+              <span id="previewViews">—</span>
+            </div>
+
+            <!-- AD GATE for 4K -->
+            <div class="ad-gate" id="adGate">
+              <p>🔒 <strong>4K downloads</strong> require watching a short ad.</p>
+              <button class="btn-watch-ad" onclick="startAdGate()">▶ WATCH AD TO UNLOCK</button>
+            </div>
+
+            <!-- DOWNLOAD BUTTON -->
+            <button class="btn-download" id="downloadBtn" onclick="triggerDownload()">⬇ DOWNLOAD NOW</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- INLINE AD (after download box) -->
+      <div class="ad-inline">[ AD UNIT — 300×250 — In-content Banner · Place AdSense code here ]</div>
+    </section>
+
+    <!-- ─── FEATURES ─── -->
+    <section style="padding:0 0 2rem">
+      <div class="section-label">Why VidSnap</div>
+      <div class="section-title">BUILT FOR SPEED &amp; QUALITY</div>
+      <div class="features-grid">
+        <div class="feat-card">
+          <div class="feat-icon">⚡</div>
+          <h3>Lightning Fast</h3>
+          <p>Downloads start in seconds. No waiting, no queues. Powered by server-side acceleration.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🔒</div>
+          <h3>100% Secure</h3>
+          <p>No sign-up required. We don't store your links or personal data — ever.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📱</div>
+          <h3>All Devices</h3>
+          <p>Works perfectly on iPhone, Android, Mac, Windows and everything in between.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🎬</div>
+          <h3>True 4K</h3>
+          <p>Get the original 2160p quality with HDR where available — not upscaled.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🎵</div>
+          <h3>MP3 Extract</h3>
+          <p>Convert any video to high-quality MP3 audio instantly, no extra apps needed.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📎</div>
+          <h3>Shorts Ready</h3>
+          <p>Download YouTube Shorts, Reels, and clips — just paste and go.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── HOW IT WORKS ─── -->
+    <section id="how" style="padding:0 0 3rem">
+      <div class="section-label">Simple Steps</div>
+      <div class="section-title">HOW IT WORKS</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-line"></div>
+          <div class="step-content">
+            <h3>Paste the Link</h3>
+            <p>Copy any YouTube, YouTube Shorts, or compatible video URL and paste it in the box above.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-line"></div>
+          <div class="step-content">
+            <h3>Choose Your Quality</h3>
+            <p>Pick from MP4 720p, 1080p, true 4K, or extract as MP3 audio — your choice.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-line"></div>
+          <div class="step-content">
+            <h3>Unlock &amp; Download</h3>
+            <p>For 4K, watch a short ad to unlock. For other qualities, it's instant — no ad needed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── INLINE AD ─── -->
+    <div class="ad-inline">[ AD UNIT — 728×90 — Mid-page Banner · AdSense / Adsterra ]</div>
+
+    <!-- ─── FAQ ─── -->
+    <section id="faq" style="padding:0 0 3rem">
+      <div class="section-label">FAQ</div>
+      <div class="section-title">COMMON QUESTIONS</div>
+      <div class="faq">
+        <details open>
+          <summary>Is VidSnap 4K free to use?</summary>
+          <p>Yes — completely free. Downloads up to 1080p are instant with no ads. 4K downloads require watching a short rewarded ad to keep the service free for everyone.</p>
+        </details>
+        <details>
+          <summary>How do I download a YouTube video in 4K?</summary>
+          <p>Paste the YouTube link, select MP4 4K from the format grid, click Fetch, then click "Watch Ad to Unlock." After the short ad, your 4K download begins automatically.</p>
+        </details>
+        <details>
+          <summary>Can I download YouTube Shorts?</summary>
+          <p>Yes! Just paste the YouTube Shorts URL (youtube.com/shorts/…) and it works exactly the same as a regular video.</p>
+        </details>
+        <details>
+          <summary>Does it work on iPhone and Android?</summary>
+          <p>Absolutely. VidSnap 4K is fully mobile-optimized. On iOS you may need a download manager app to save the file; on Android it saves directly to your downloads folder.</p>
+        </details>
+        <details>
+          <summary>Is it legal to download YouTube videos?</summary>
+          <p>Downloading videos for personal offline viewing may be permitted depending on your country's copyright laws. Always respect the creator's rights and YouTube's Terms of Service. Do not redistribute downloaded content.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ─── BLOG TEASERS ─── -->
+    <section id="blog" style="padding:0 0 3rem">
+      <div class="section-label">Resources</div>
+      <div class="section-title">LATEST GUIDES</div>
+      <div class="features-grid">
+        <a href="/blog/download-youtube-4k-2026" style="text-decoration:none">
+          <div class="feat-card" style="cursor:pointer">
+            <div class="feat-icon">📖</div>
+            <h3>How to Download YouTube Videos in 4K (2026 Guide)</h3>
+            <p style="margin-top:0.5rem;color:var(--accent);font-size:0.78rem">Read guide →</p>
+          </div>
+        </a>
+        <a href="/blog/best-free-video-downloaders" style="text-decoration:none">
+          <div class="feat-card" style="cursor:pointer">
+            <div class="feat-icon">📋</div>
+            <h3>Best Free Video Downloaders Compared</h3>
+            <p style="margin-top:0.5rem;color:var(--accent);font-size:0.78rem">Read guide →</p>
+          </div>
+        </a>
+        <a href="/blog/download-youtube-shorts" style="text-decoration:none">
+          <div class="feat-card" style="cursor:pointer">
+            <div class="feat-icon">📱</div>
+            <h3>Download YouTube Shorts Easily on Any Device</h3>
+            <p style="margin-top:0.5rem;color:var(--accent);font-size:0.78rem">Read guide →</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RIGHT SIDEBAR AD -->
+  <aside class="sidebar">
+    <div class="sidebar-ad">
+      <span style="font-size:1.5rem">📢</span>
+      <span>AD</span>
+      <span>160×600</span>
+      <span style="text-align:center;padding:0.5rem">Place AdSense / Adsterra skyscraper here</span>
+    </div>
+  </aside>
+
+</div><!-- /page-wrap -->
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-brand">
+    <div class="logo">Vid<span>Snap</span></div>
+    <p>Free 4K YouTube video downloader. Fast, secure, and works on all devices. No registration required.</p>
+  </div>
+  <div class="footer-links">
+    <h4>Tools</h4>
+    <a href="/youtube-downloader">YouTube Downloader</a>
+    <a href="/4k-video-downloader">4K Video Downloader</a>
+    <a href="/youtube-to-mp3">YouTube to MP3</a>
+    <a href="/download-youtube-shorts">Download Shorts</a>
+  </div>
+  <div class="footer-links">
+    <h4>Company</h4>
+    <a href="/about">About</a>
+    <a href="/blog">Blog</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms of Service</a>
+    <a href="/dmca">DMCA</a>
+    <a href="/contact">Contact</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 VidSnap 4K. All rights reserved.</span>
+  <span>⚠️ For personal use only. Respect copyright laws.</span>
+</div>
+
+<!-- ─── JAVASCRIPT ─── -->
+<!-- ONLY SHOWING MODIFIED SCRIPT PART -->
+<!-- Replace your entire <script> section with this -->
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────
+let selectedFormat = '1080p';
+let currentVideoId = null;
+let downloadUnlocked = false;
+
+function setFormat(el, fmt) {
+  document.querySelectorAll('.fmt-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  selectedFormat = fmt;
+
+  const adGate = document.getElementById('adGate');
+  const dlBtn  = document.getElementById('downloadBtn');
+
+  if (currentVideoId) {
+    if (fmt === '4k' && !downloadUnlocked) {
+      adGate.classList.add('visible');
+      dlBtn.classList.remove('visible');
+    } else {
+      adGate.classList.remove('visible');
+      dlBtn.classList.add('visible');
+    }
+  }
+}
+
+// ── Fetch Video ─────────────────────────────────────────────────────────
+function fetchVideo() {
+  const url = document.getElementById('urlInput').value.trim();
+  if (!url) { alert('Please paste a YouTube URL first.'); return; }
+
+  const vid = extractVideoId(url);
+  if (!vid) { alert('Invalid YouTube URL'); return; }
+
+  currentVideoId = vid;
+  downloadUnlocked = false;
+
+  const pw = document.getElementById('progressWrap');
+  pw.classList.add('visible');
+  animateProgress(0, 100, 1200, 'Fetching video info…');
+
+  setTimeout(() => {
+    pw.classList.remove('visible');
+    showPreview(vid);
+  }, 1300);
+}
+
+function extractVideoId(url) {
+  const match = url.match(/(?:v=|\/shorts\/|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  return match ? match[1] : null;
+}
+
+function showPreview(vid) {
+  document.getElementById('thumbImg').src =
+    `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
+
+  document.getElementById('previewTitle').textContent = "Ready to download";
+  document.getElementById('previewChannel').textContent = "YouTube";
+
+  const card   = document.getElementById('previewCard');
+  const adGate = document.getElementById('adGate');
+  const dlBtn  = document.getElementById('downloadBtn');
+
+  card.classList.add('visible');
+
+  if (selectedFormat === '4k' && !downloadUnlocked) {
+    adGate.classList.add('visible');
+    dlBtn.classList.remove('visible');
+  } else {
+    adGate.classList.remove('visible');
+    dlBtn.classList.add('visible');
+  }
+}
+
+// ── Progress ────────────────────────────────────────────────────────────
+function animateProgress(from, to, duration, label) {
+  const fill  = document.getElementById('progressFill');
+  const pct   = document.getElementById('progressPct');
+  const status = document.getElementById('progressStatus');
+
+  status.textContent = label;
+
+  const start = performance.now();
+
+  function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const val = Math.round(from + (to - from) * p);
+    fill.style.width = val + '%';
+    pct.textContent  = val + '%';
+    if (p < 1) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+// ── Ad Gate ─────────────────────────────────────────────────────────────
+let countdownInterval = null;
+
+function startAdGate() {
+  document.getElementById('adModal').classList.add('open');
+
+  let seconds = 5;
+  document.getElementById('countdown').textContent = seconds;
+
+  clearInterval(countdownInterval);
+
+  countdownInterval = setInterval(() => {
+    seconds--;
+    document.getElementById('countdown').textContent = seconds;
+
+    if (seconds <= 0) {
+      clearInterval(countdownInterval);
+      document.getElementById('skipBtn').classList.add('visible');
+      document.getElementById('countdown').textContent = '✓';
+    }
+  }, 1000);
+}
+
+function unlockDownload() {
+  downloadUnlocked = true;
+
+  document.getElementById('adModal').classList.remove('open');
+  document.getElementById('adGate').classList.remove('visible');
+  document.getElementById('downloadBtn').classList.add('visible');
+}
+
+// ── 🔥 REAL DOWNLOAD FUNCTION ───────────────────────────────────────────
+async function triggerDownload() {
+  if (!currentVideoId) return;
+
+  const btn = document.getElementById("downloadBtn");
+  const originalText = btn.textContent;
+
+  btn.textContent = "⏳ Preparing download...";
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(
+      `/api/download?id=${currentVideoId}&fmt=${selectedFormat}`
+    );
+
+    if (!res.ok) throw new Error();
+
+    const blob = await res.blob();
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `video-${currentVideoId}.mp4`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+  } catch (err) {
+    alert("❌ Download failed. Server issue or unsupported video.");
+  }
+
+  btn.textContent = originalText;
+  btn.disabled = false;
+}
+</script>
+</body>
+</html>
