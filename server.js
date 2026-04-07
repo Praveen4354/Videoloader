@@ -28,9 +28,10 @@ app.get("/api/download", (req, res) => {
   const filePath = path.join(DOWNLOAD_DIR, `${id}.mp4`);
 
   let format = "best";
-  if (fmt === "720p") format = "best[height<=720]";
-  if (fmt === "1080p") format = "best[height<=1080]";
-  if (fmt === "4k") format = "bestvideo+bestaudio";
+
+if (fmt === "720p") format = "best[height<=720]";
+if (fmt === "1080p") format = "best[height<=1080]";
+if (fmt === "4k") format = "best"; // 🔥 TEMP FIX
 
   const command = `${__dirname}/yt-dlp -f "${format}" -o "${filePath}" ${url}`;
 
