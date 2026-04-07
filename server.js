@@ -34,12 +34,20 @@ app.get("/api/download", (req, res) => {
 
   const command = `${__dirname}/yt-dlp -f "${format}" -o "${filePath}" ${url}`;
 
-  exec(command, (err) => {
-    if (err) return res.status(500).send("Download failed");
+  exec(command, (err, stdout, stderr) => {
+  console.log("COMMAND:", command);
+  console.log("STDOUT:", stdout);
+  console.log("STDERR:", stderr);
 
-    res.download(filePath, () => {
-      fs.unlink(filePath, () => {});
-    });
+  if (err) {
+    console.error("ERROR:", err);
+    return res.status(500).send("Download failed");
+  }
+
+  res.download(filePath, () => {
+    fs.unlink(filePath, () => {});
+  });
+});
   });
 });
 
