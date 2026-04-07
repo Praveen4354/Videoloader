@@ -32,7 +32,7 @@ app.get("/api/download", (req, res) => {
   if (fmt === "1080p") format = "best[height<=1080]";
   if (fmt === "4k") format = "bestvideo+bestaudio";
 
-  const command = `python3 -m yt_dlp -f "${format}" -o "${filePath}" ${url}`;
+  const command = `${__dirname}/yt-dlp -f "${format}" -o "${filePath}" ${url}`;
 
   exec(command, (err) => {
     if (err) return res.status(500).send("Download failed");
